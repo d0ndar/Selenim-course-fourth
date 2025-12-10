@@ -20,3 +20,16 @@ class LoginPage(BasePage):
                 and self.is_element_present(*LoginPageLocators.REGISTRARTION_PASSWORD_LINK)
                 and self.is_element_present(*LoginPageLocators.REGISTRARTION_REPEAT_PASSWORD_LINK)),\
                 f"Не смог найти поле пароля\email для регистрации"
+
+    def register_new_user(self, email, password):
+
+        email_field = self.browser.find_element(*LoginPageLocators.REGISTRARTION_EMAIL_LINK)
+        password_field = self.browser.find_element(*LoginPageLocators.REGISTRARTION_PASSWORD_LINK)
+        password_field_repeat = self.browser.find_element(*LoginPageLocators.REGISTRARTION_REPEAT_PASSWORD_LINK)
+        submit_button = self.browser.find_element(*LoginPageLocators.REGISTRARTION_BUTTON_LINK)
+
+        email_field.send_keys(email)
+        password_field.send_keys(password)
+        password_field_repeat.send_keys(password)
+        submit_button.click()
+
