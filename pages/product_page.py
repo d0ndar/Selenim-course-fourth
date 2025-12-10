@@ -26,5 +26,14 @@ class ProductPage(BasePage):
         assert price_in_item_page in price_in_cart, f"Price in cart is not correct, actual price: {price_in_item_page}"
 
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ADD_TO_CART), \
+            "Success message is presented, but should not be"
+
+    def should_disappeared_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ADD_TO_CART), \
+            "Success message is not disappeared, but should be"
+
+
 
 
